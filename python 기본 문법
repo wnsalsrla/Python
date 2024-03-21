@@ -85,3 +85,153 @@ pythonCopy code
 my_dict = {"key1": "value1", "key2": "value2"}
 
 ```
+
+python functions는 호출될 때 실행되는 코드 블록dl다.
+
+매개변수(parameter)로 데이터를 전달할 수 있다.
+함수는 데이터를 결과로 반환할 수 있다.
+함수를 생성하려면 def 키워드를 사용gks다.
+
+python
+Copy code
+def my_function():
+    print("함수에서 안녕하세요")
+함수를 호출하려면 함수 이름 뒤에 괄호를 사용한다.
+
+python
+Copy code
+my_function()
+매개변수를 통해 함수에 데이터를 전달할 수 있다.
+
+python
+Copy code
+def my_function(fname):
+    print(fname + " 군")
+
+my_function("철수")
+my_function("영희")
+my_function("민수")
+함수는 기본적으로 정확한 개수의 인자를 가지고 호출되어야 한한다.
+
+python
+Copy code
+def my_function(fname, lname):
+    print(fname + " " + lname)
+
+my_function("철수", "홍")
+가변 인자를 사용하여 인자의 수를 알 수 없는 함수를 정의할 수 있다.
+
+python
+Copy code
+def my_function(*kids):
+    print("제일 어린 아이는 " + kids[2])
+
+my_function("철수", "영희", "민수")
+키워드 인자를 사용하여 인자의 이름을 지정할 수 있다.
+
+python
+Copy code
+def my_function(child3, child2, child1):
+    print("제일 어린 아이는 " + child3)
+
+my_function(child1 = "철수", child2 = "영희", child3 = "민수")
+기본 매개변수 값을 사용하여 함수를 호출할 때 인자를 생략할 수 있다.
+
+python
+Copy code
+def my_function(country = "한국"):
+    print("저는 " + country + "에서 왔어요")
+
+my_function("스웨덴")
+my_function("인도")
+my_function()
+my_function("브라질")
+리스트를 함수의 인자로 전달할 수 있다.
+
+python
+Copy code
+def my_function(food):
+    for x in food:
+        print(x)
+
+fruits = ["사과", "바나나", "체리"]
+my_function(fruits)
+함수가 결과값을 반환하려면 return 문을 사용한다.
+
+python
+Copy code
+def my_function(x):
+    return 5 * x
+
+print(my_function(3))
+print(my_function(5))
+print(my_function(9))
+함수의 내용이 없는 경우, 에러를 방지하기 위해 pass 문을 사용한다.
+
+python
+Copy code
+def my_function():
+    pass
+위치 인자만 허용하는 함수를 정의할 수 있다.
+
+python
+Copy code
+def my_function(x, /):
+    print(x)
+
+my_function(3)
+키워드 인자만 허용하는 함수를 정의할 수 있다.
+
+python
+Copy code
+def my_function(*, x):
+    print(x)
+
+my_function(x = 3)
+위치 인자와 키워드 인자를 동시에 사용할 수 있다.
+
+python
+Copy code
+def my_function(a, b, /, *, c, d):
+    print(a + b + c + d)
+
+my_function(5, 6, c = 7, d = 8)
+함수 안에서 자기 자신을 호출할 수 있는 재귀함수를 사용할 수 있다.
+
+python
+Copy code
+def tri_recursion(k):
+    if(k > 0):
+        result = k + tri_recursion(k - 1)
+        print(result)
+    else:
+        result = 0
+    return result
+
+print("\n\n재귀함수 예제 결과")
+tri_recursion(6)
+
+람다 함수는 익명 함수로서, 한 줄로 작성됩니다. 여러 개의 인자를 받을 수 있지만 오직 한 개의 표현식만을 포함할 수 있습니다. 람다 함수는 주로 다른 함수 내에서 익명 함수로 사용됩니다. 람다 함수를 사용하면 코드를 간결하게 작성할 수 있습니다.
+
+python
+Copy code
+x = lambda a : a + 10
+print(x(5))  # 출력: 15
+
+y = lambda a, b : a * b
+print(y(5, 6))  # 출력: 30
+
+z = lambda a, b, c : a + b + c
+print(z(5, 6, 2))  # 출력: 13
+람다 함수를 활용하면 다른 함수 내에서 익명 함수로 사용될 때 특히 유용합니다. 이렇게 하면 코드가 간결해지고 가독성이 향상됩니다.
+
+python
+Copy code
+def myfunc(n):
+  return lambda a : a * n
+
+mydoubler = myfunc(2)
+print(mydoubler(11))  # 출력: 22
+
+mytripler = myfunc(3)
+print(mytripler(11))  # 출력: 33
